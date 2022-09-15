@@ -1,15 +1,33 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Net.Sockets;
+using System.Net;
 using System.Windows.Forms;
 
 namespace ClientApp
 {
     public partial class Form1 : Form
     {
+        string localIP = "";
         public Form1()
         {
             InitializeComponent();
+            
+            IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress[] addr = ipEntry.AddressList;
+
+            foreach (IPAddress ip in addr)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    if (ip.ToString().Contains("192.168.0"))
+                    {
+                        localIP = ip.ToString();
+                        break;
+                    }
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
