@@ -38,11 +38,15 @@ namespace ClientApp
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                
+                if (reader.HasRows)
                 {
-                   
+                    MessageBox.Show("로그인 되었습니다.");
+                } else
+                {
+                    MessageBox.Show("로그인에 실패하였습니다.\n아이디 / 비밀번호를 확인해주세요.");
                 }
+                
                 conn.Close();
             }
             catch (Exception ex)
