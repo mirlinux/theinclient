@@ -6,5 +6,7 @@ namespace ClientApp
         static public string DB_USERID      = "student";
         static public string DB_PASSWORD    = "studentpass";
         static public string DB_DATABASE    = "thein";
+        static public string DB_DATASOURSE  = "datasource = " + DB_SERVER + "; database=" + DB_DATABASE + ";userid=" + DB_USERID + ";password=" + DB_PASSWORD ;
+   
     }
 }

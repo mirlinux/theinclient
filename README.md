@@ -12,3 +12,23 @@ CREATE TABLE `thein`.`member` (
   `ip` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 ```
+
+```
+CREATE TABLE `thein`.`machine` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `ip` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+```
+
+```
+CREATE TABLE `thein`.`log` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `time` DATETIME NULL,
+  `machine_id` INT NULL,
+  `ip` VARCHAR(45) NULL,
+  `cpu` DOUBLE NULL,
+  `mem` INT NULL,
+  `mem_usage` DOUBLE NULL,
+  PRIMARY KEY (`id`));
+```
