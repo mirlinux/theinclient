@@ -14,24 +14,29 @@ namespace ClientApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string userid = tbUserId.Text;
-                string password = tbPassword.Text;
 
-                if (userid == "" || password == "")
+            string userid = tbUserId.Text;
+            string password = tbPassword.Text;
+
+            if (userid == "" || password == "")
+            {
+                MessageBox.Show("아이디 / 비밀번호를 입력해 주세요.");
+                if (userid == "")
                 {
-                    MessageBox.Show("아이디 / 비밀번호를 입력해 주세요.");
-                    if (userid == "")
-                    {
-                        tbUserId.Focus();
-                        return;
-                    }
-                    if (password == "") tbPassword.Focus();
+                    tbUserId.Focus();
                     return;
                 }
+                if (password == "")
+                {
+                    tbPassword.Focus();
+                    return;
+                }
+            }
 
-                MySqlConnection conn = new MySqlConnection(Config.DB_DATASOURSE);
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(Config.DB_DATASOURSE);
                 conn.Open();
                 string query = "SELECT id FROM member WHERE userid = '"+userid+"' AND password = '"+password+"'";
                 
@@ -42,12 +47,13 @@ namespace ClientApp
                 if (reader.HasRows)
                 {
                     MessageBox.Show("로그인 되었습니다.");
+                    MainForm form = new MainForm();
+                    form.Show();
+                    this.Close();
                 } else
                 {
-                    MessageBox.Show("로그인에 실패하였습니다.\n아이디 / 비밀번호를 확인해주세요.");
+                    MessageBox.Show("로그인에 실패하였습니다.\n아이디/비밀번호를 확인해주세요.");
                 }
-                
-                conn.Close();
             }
             catch (Exception ex)
             {
@@ -55,8 +61,17 @@ namespace ClientApp
             }
             finally
             {
-
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.Show();
         }
     }
 }

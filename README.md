@@ -12,7 +12,7 @@ CREATE TABLE `thein`.`member` (
   `ip` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 ```
-### machineTable
+### machine Table
 ```
 CREATE TABLE `thein`.`machine` (
   `id` INT NOT NULL AUTO_INCREMENT,
