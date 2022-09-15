@@ -47,7 +47,7 @@ namespace ClientApp
                 if (reader.HasRows)
                 {
                     MessageBox.Show("로그인 되었습니다.");
-                    MainForm form = new MainForm();
+                    Form3 form = new Form3();
                     form.Show();
                     this.Close();
                 } else

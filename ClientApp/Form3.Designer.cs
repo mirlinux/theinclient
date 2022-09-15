@@ -1,6 +1,6 @@
 ﻿namespace ClientApp
 {
-    partial class MainForm
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // MainForm
+            // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainForm";
+            this.Name = "Form3";
             this.Text = "메인화면";
             this.ResumeLayout(false);
 
