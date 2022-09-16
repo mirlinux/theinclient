@@ -10,6 +10,15 @@
 
 ![캡처](https://user-images.githubusercontent.com/19258598/190535375-ee671aa4-9c04-4ec7-a02c-50af661d008f.PNG)
 
+
+## 실행화면 Screen Shot
+
+### 로그인 화면
+![캡처10](https://user-images.githubusercontent.com/19258598/190535927-8b133a4d-95aa-403d-a26b-fd40147057cc.PNG)
+
+### 회원가입 화면
+![캡처11](https://user-images.githubusercontent.com/19258598/190535933-1b47f3ed-78e3-4423-8471-1f89fd8ed03d.PNG)
+
 ## Database Table Schema
 ### Member Table
 ```
