@@ -21,6 +21,12 @@ namespace ClientApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+        }
+
+
+        private void GetLogData()
+        {
             MySqlConnection conn = null;
             try
             {
@@ -43,19 +49,29 @@ namespace ClientApp
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = cmd;
-                
+
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 dataGridView1.DataSource = table;
+
+                DataGridViewColumn column = dataGridView1.Columns[0];
+                column.Width = 150;
 
             }
             catch (Exception ex)
             {
 
-            } finally
+            }
+            finally
             {
                 if (conn != null) conn.Close();
             }
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetLogData();
         }
     }
 
