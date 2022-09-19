@@ -81,10 +81,7 @@ namespace ClientApp
             }
             finally
             {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
+                if (conn != null) conn.Close();
             }
         }
 
