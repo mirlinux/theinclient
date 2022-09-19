@@ -38,7 +38,7 @@ namespace ClientApp
 
             if (userid == "" || password == "")
             {
-                MessageBox.Show("¾ÆÀÌµğ / ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+                MessageBox.Show("ì•„ì´ë”” / ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
                 if (userid == "")
                 {
                     tbUserId.Focus();
@@ -64,13 +64,14 @@ namespace ClientApp
                 
                 if (reader.HasRows)
                 {
-                    MessageBox.Show("·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+                    MessageBox.Show("ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
                     Form3 form = new Form3();
                     form.Show();
                     this.Close();
                 } else
                 {
-                    MessageBox.Show("·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.\n¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.");
+                    MessageBox.Show("ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.\nì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.");
+                    // test comment;
                 }
             }
             catch (Exception ex)
