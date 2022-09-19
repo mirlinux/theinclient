@@ -32,7 +32,8 @@ namespace ClientApp
                 query += "machine_id as '장비', ";
                 query += "cpu as 'CPU 사용량', ";
                 query += "mem as '메모리 사용량(MB)', ";
-                query += "mem_usage as '메모리 사용량 (%)' ";
+                query += "mem_usage as '메모리 사용량 (%)', ";
+                query += "ip as '장비 IP' ";
                 query += "FROM log ";
                 query += "ORDER BY time desc ";
 
