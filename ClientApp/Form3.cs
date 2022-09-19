@@ -6,6 +6,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -102,6 +104,38 @@ namespace ClientApp
         private void timer1_Tick(object sender, EventArgs e)
         {
             GetLogData();
+        }
+
+        private void deviceBox_DoubleClick(object sender, EventArgs e)
+        {
+            string strItem = ((ListBox)sender).SelectedItem.ToString();
+            string[] itemArray = strItem.Split("|");
+            string ip = itemArray[0];
+            Debug.WriteLine("Target IP ["+ip+"]");
+            Thread runner = new Thread(new ParameterizedThreadStart(connectDevice));
+            runner.IsBackground = true;
+            runner.Start(ip);
+        }
+
+        private void connectDevice(object ip)
+        {
+            try
+            {
+                TcpClient client = new TcpClient();
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip.ToString()), 9000);
+                client.Connect(endPoint);
+
+                StreamReader receiver = new StreamReader(client.GetStream());
+                StreamWriter sender = new StreamWriter(client.GetStream());
+                while (client.Connected)
+                {
+                    string data = receiver.ReadLine();
+                    Debug.WriteLine(data);
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 

@@ -58,6 +58,7 @@
             this.deviceBox.Name = "deviceBox";
             this.deviceBox.Size = new System.Drawing.Size(323, 229);
             this.deviceBox.TabIndex = 1;
+            this.deviceBox.DoubleClick += new System.EventHandler(this.deviceBox_DoubleClick);
             // 
             // Form3
             // 
