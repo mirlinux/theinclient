@@ -71,7 +71,6 @@ namespace ClientApp
                 } else
                 {
                     MessageBox.Show("로그인에 실패하였습니다.\n아이디/비밀번호를 확인해주세요.");
-                    // test comment;
                 }
             }
             catch (Exception ex)
