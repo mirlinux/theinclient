@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,35 @@ namespace ClientApp
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(Config.DB_DATASOURSE);
+                conn.Open();
+
+                string query = "SELECT * FROM log";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dataGridView1.DataSource = table;
+
+            }
+            catch (Exception ex)
+            {
+
+            } finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
     }
+
+
 }

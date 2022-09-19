@@ -14,8 +14,6 @@ namespace ClientApp
             Form1 form = new Form1();
             form.Show();
             Application.Run();
-
-            // 주석추가
         }
     }
 }
