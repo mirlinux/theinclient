@@ -36,6 +36,8 @@ namespace ClientApp
             string userid = tbUserId.Text;
             string password = tbPassword.Text;
 
+            // 주석 추가
+
             if (userid == "" || password == "")
             {
                 MessageBox.Show("아이디 / 비밀번호를 입력해 주세요.");
