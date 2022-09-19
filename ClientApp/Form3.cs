@@ -58,7 +58,7 @@ namespace ClientApp
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {
