@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.deviceBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,11 +50,21 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // deviceBox
+            // 
+            this.deviceBox.FormattingEnabled = true;
+            this.deviceBox.ItemHeight = 15;
+            this.deviceBox.Location = new System.Drawing.Point(12, 32);
+            this.deviceBox.Name = "deviceBox";
+            this.deviceBox.Size = new System.Drawing.Size(323, 229);
+            this.deviceBox.TabIndex = 1;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.deviceBox);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form3";
             this.Text = "메인화면";
@@ -67,5 +78,6 @@
 
         private DataGridView dataGridView1;
         private System.Windows.Forms.Timer timer1;
+        private ListBox deviceBox;
     }
 }

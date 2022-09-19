@@ -21,7 +21,7 @@ namespace ClientApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            GetDeviceList();
         }
 
 
@@ -43,8 +43,6 @@ namespace ClientApp
                 query += "FROM log ";
                 query += "ORDER BY time desc ";
 
-                Debug.WriteLine(query);
-
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -56,6 +54,38 @@ namespace ClientApp
 
                 DataGridViewColumn column = dataGridView1.Columns[0];
                 column.Width = 150;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
+
+        private void GetDeviceList()
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(Config.DB_DATASOURSE);
+                conn.Open();
+
+                string query = "SELECT * FROM machine";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    string ip = reader["ip"].ToString();
+                    string name = reader["name"].ToString();
+                    deviceBox.Items.Add(ip+"|["+name+"]");
+                }
+
 
             }
             catch (Exception ex)
