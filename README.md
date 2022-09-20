@@ -19,6 +19,10 @@
 ### 회원가입 화면
 ![캡처11](https://user-images.githubusercontent.com/19258598/190535933-1b47f3ed-78e3-4423-8471-1f89fd8ed03d.PNG)
 
+### 메인화면
+![캡처3](https://user-images.githubusercontent.com/19258598/191162835-cf8f2e63-2aeb-4c5d-9514-963ada4c861c.PNG)
+
+
 ## Database Table Schema
 ### Member Table
 ```
