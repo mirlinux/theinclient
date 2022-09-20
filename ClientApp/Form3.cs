@@ -127,9 +127,27 @@ namespace ClientApp
 
                 StreamReader receiver = new StreamReader(client.GetStream());
                 StreamWriter sender = new StreamWriter(client.GetStream());
+                sender.AutoFlush = true;
+
                 while (client.Connected)
                 {
                     string data = receiver.ReadLine();
+                    // "CONNECT:LOCALHOSTNAME;192.168.0.8"
+                    string[] dataArray = data.Split(":");
+                    string command = dataArray[0];
+                    string body = dataArray[1];
+                    switch (command)
+                    {
+                        case "CONNECT":
+                            string[] paramList = body.Split(";");
+                            Debug.WriteLine("Name [" + paramList[0] + "] IP [" + paramList[1] + "]");
+                            sender.WriteLine("GET_STATUS:"+ip);
+                            break;
+                        case "STATUS":
+                            break;
+                        default:
+                            break;
+                    }
                     Debug.WriteLine(data);
                 }
             }
