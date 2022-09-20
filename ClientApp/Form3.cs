@@ -148,6 +148,8 @@ namespace ClientApp
                             sender.WriteLine(sendData);
                             break;
                         case "STATUS":
+                            string[] status = body.Split(";");
+                            UpdateStatusControl(status);
                             break;
                         default:
                             break;
@@ -158,6 +160,18 @@ namespace ClientApp
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void UpdateStatusControl(string[] status)
+        {
+            double cpu = double.Parse(status[0]);
+            int totalMem = int.Parse(status[1]);
+            int usageMem = int.Parse(status[2]);
+            int memPercent = int.Parse(status[3]);
+            lbCpu.Invoke((MethodInvoker)delegate { lbCpu.Text = cpu + " %"; });
+            lbMem.Invoke((MethodInvoker)delegate { lbMem.Text = usageMem + " MB ( "+totalMem+" MB )"; });
+            pbCpu.Invoke((MethodInvoker)delegate { pbCpu.Value = (int)cpu; });
+            pbMem.Invoke((MethodInvoker)delegate { pbMem.Value = memPercent; });
         }
 
         private void DebugTextBox(string message)

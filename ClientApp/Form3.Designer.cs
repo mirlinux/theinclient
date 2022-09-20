@@ -36,8 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbMem = new System.Windows.Forms.Label();
             this.lbCpu = new System.Windows.Forms.Label();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pbMem = new System.Windows.Forms.ProgressBar();
+            this.pbCpu = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
@@ -75,8 +75,8 @@
             this.gbDevice.Controls.Add(this.label3);
             this.gbDevice.Controls.Add(this.lbMem);
             this.gbDevice.Controls.Add(this.lbCpu);
-            this.gbDevice.Controls.Add(this.progressBar2);
-            this.gbDevice.Controls.Add(this.progressBar1);
+            this.gbDevice.Controls.Add(this.pbMem);
+            this.gbDevice.Controls.Add(this.pbCpu);
             this.gbDevice.Controls.Add(this.label2);
             this.gbDevice.Controls.Add(this.label1);
             this.gbDevice.Location = new System.Drawing.Point(341, 32);
@@ -113,19 +113,19 @@
             this.lbCpu.TabIndex = 4;
             this.lbCpu.Text = "0 %";
             // 
-            // progressBar2
+            // pbMem
             // 
-            this.progressBar2.Location = new System.Drawing.Point(116, 66);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(100, 23);
-            this.progressBar2.TabIndex = 3;
+            this.pbMem.Location = new System.Drawing.Point(116, 66);
+            this.pbMem.Name = "pbMem";
+            this.pbMem.Size = new System.Drawing.Size(100, 23);
+            this.pbMem.TabIndex = 3;
             // 
-            // progressBar1
+            // pbCpu
             // 
-            this.progressBar1.Location = new System.Drawing.Point(116, 34);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 2;
+            this.pbCpu.Location = new System.Drawing.Point(116, 34);
+            this.pbCpu.Name = "pbCpu";
+            this.pbCpu.Size = new System.Drawing.Size(100, 23);
+            this.pbCpu.TabIndex = 2;
             // 
             // label2
             // 
@@ -181,8 +181,8 @@
         private Label label3;
         private Label lbMem;
         private Label lbCpu;
-        private ProgressBar progressBar2;
-        private ProgressBar progressBar1;
+        private ProgressBar pbMem;
+        private ProgressBar pbCpu;
         private Label label2;
         private Label label1;
         private RichTextBox rtbLog;
