@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -132,6 +133,7 @@ namespace ClientApp
                 while (client.Connected)
                 {
                     string data = receiver.ReadLine();
+                    DebugTextBox("RECV ["+data+"]");
                     // "CONNECT:LOCALHOSTNAME;192.168.0.8"
                     string[] dataArray = data.Split(":");
                     string command = dataArray[0];
@@ -141,7 +143,9 @@ namespace ClientApp
                         case "CONNECT":
                             string[] paramList = body.Split(";");
                             Debug.WriteLine("Name [" + paramList[0] + "] IP [" + paramList[1] + "]");
-                            sender.WriteLine("GET_STATUS:"+ip);
+                            string sendData = "GET_STATUS:"+ip;
+                            DebugTextBox("SEND [" + sendData + "]");
+                            sender.WriteLine(sendData);
                             break;
                         case "STATUS":
                             break;
@@ -155,7 +159,34 @@ namespace ClientApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DebugTextBox(string message)
+        {   
+            rtbLog.Invoke((MethodInvoker)delegate { rtbLog.AppendText(message + "\r\n"); });
+            rtbLog.Invoke((MethodInvoker)delegate { rtbLog.ScrollToCaret(); });
+            rtbLog.Invoke((MethodInvoker)delegate { DebugTextColor("SEND", Color.Red); });
+            rtbLog.Invoke((MethodInvoker)delegate { DebugTextColor("RECV", Color.Blue); });
+        }
+
+        private void DebugTextColor(string target, Color color)
+        {
+            Regex regex = new Regex(target);
+            MatchCollection mc = regex.Matches(rtbLog.Text);
+            int iCursorPosition = rtbLog.SelectionStart;
+
+            foreach (Match m in mc)
+            {
+                int iStartIdx = m.Index;
+                int iStopIdx = m.Length;
+
+                rtbLog.Select(iStartIdx, iStopIdx);
+                rtbLog.SelectionColor = color;
+                rtbLog.SelectionStart = iCursorPosition;
+                rtbLog.SelectionColor = Color.Black;
+            }
+        }
     }
+
 
 
 }
