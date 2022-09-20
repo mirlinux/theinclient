@@ -22,6 +22,8 @@
 ### 메인화면
 ![캡처3](https://user-images.githubusercontent.com/19258598/191162835-cf8f2e63-2aeb-4c5d-9514-963ada4c861c.PNG)
 
+## 실행 동영상
+https://user-images.githubusercontent.com/19258598/191189016-f9d51c6b-a609-4ece-9898-8130ca1da9fd.mp4
 
 ## Database Table Schema
 ### Member Table
