@@ -33,7 +33,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.deviceBox = new System.Windows.Forms.ListBox();
             this.gbDevice = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.CheckBox();
+            this.lbIp = new System.Windows.Forms.Label();
             this.lbMem = new System.Windows.Forms.Label();
             this.lbCpu = new System.Windows.Forms.Label();
             this.pbMem = new System.Windows.Forms.ProgressBar();
@@ -72,7 +73,8 @@
             // 
             // gbDevice
             // 
-            this.gbDevice.Controls.Add(this.label3);
+            this.gbDevice.Controls.Add(this.cbStatus);
+            this.gbDevice.Controls.Add(this.lbIp);
             this.gbDevice.Controls.Add(this.lbMem);
             this.gbDevice.Controls.Add(this.lbCpu);
             this.gbDevice.Controls.Add(this.pbMem);
@@ -86,14 +88,25 @@
             this.gbDevice.TabStop = false;
             this.gbDevice.Text = "Device";
             // 
-            // label3
+            // cbStatus
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(350, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "0.0.0.0";
+            this.cbStatus.AutoSize = true;
+            this.cbStatus.Location = new System.Drawing.Point(304, 111);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(126, 19);
+            this.cbStatus.TabIndex = 7;
+            this.cbStatus.Text = "상태정보 가져오기";
+            this.cbStatus.UseVisualStyleBackColor = true;
+            this.cbStatus.CheckedChanged += new System.EventHandler(this.cbStatus_CheckedChanged);
+            // 
+            // lbIp
+            // 
+            this.lbIp.AutoSize = true;
+            this.lbIp.Location = new System.Drawing.Point(350, 19);
+            this.lbIp.Name = "lbIp";
+            this.lbIp.Size = new System.Drawing.Size(44, 15);
+            this.lbIp.TabIndex = 6;
+            this.lbIp.Text = "0.0.0.0";
             // 
             // lbMem
             // 
@@ -178,7 +191,7 @@
         private System.Windows.Forms.Timer timer1;
         private ListBox deviceBox;
         private GroupBox gbDevice;
-        private Label label3;
+        private Label lbIp;
         private Label lbMem;
         private Label lbCpu;
         private ProgressBar pbMem;
@@ -186,5 +199,6 @@
         private Label label2;
         private Label label1;
         private RichTextBox rtbLog;
+        private CheckBox cbStatus;
     }
 }

@@ -113,22 +113,26 @@ namespace ClientApp
             string[] itemArray = strItem.Split("|");
             string ip = itemArray[0];
             Debug.WriteLine("Target IP ["+ip+"]");
+            lbIp.Text = ip;
+            gbDevice.Text = itemArray[1];
             Thread runner = new Thread(new ParameterizedThreadStart(connectDevice));
             runner.IsBackground = true;
             runner.Start(ip);
         }
 
+        TcpClient client;
+        StreamWriter senderStream;
         private void connectDevice(object ip)
         {
             try
             {
-                TcpClient client = new TcpClient();
+                client = new TcpClient();
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip.ToString()), 9000);
                 client.Connect(endPoint);
 
                 StreamReader receiver = new StreamReader(client.GetStream());
-                StreamWriter sender = new StreamWriter(client.GetStream());
-                sender.AutoFlush = true;
+                senderStream = new StreamWriter(client.GetStream());
+                senderStream.AutoFlush = true;
 
                 while (client.Connected)
                 {
@@ -143,9 +147,7 @@ namespace ClientApp
                         case "CONNECT":
                             string[] paramList = body.Split(";");
                             Debug.WriteLine("Name [" + paramList[0] + "] IP [" + paramList[1] + "]");
-                            string sendData = "GET_STATUS:"+ip;
-                            DebugTextBox("SEND [" + sendData + "]");
-                            sender.WriteLine(sendData);
+                            
                             break;
                         case "STATUS":
                             string[] status = body.Split(";");
@@ -197,6 +199,21 @@ namespace ClientApp
                 rtbLog.SelectionColor = color;
                 rtbLog.SelectionStart = iCursorPosition;
                 rtbLog.SelectionColor = Color.Black;
+            }
+        }
+
+        private void cbStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                string sendData = "GET_STATUS:";
+                DebugTextBox("SEND [" + sendData + "]");
+                senderStream.WriteLine(sendData);
+            } else
+            {
+                string sendData = "STOP_STATUS:";
+                DebugTextBox("SEND [" + sendData + "]");
+                senderStream.WriteLine(sendData);
             }
         }
     }
